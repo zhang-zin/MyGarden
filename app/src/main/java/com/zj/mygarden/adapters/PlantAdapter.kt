@@ -3,11 +3,13 @@ package com.zj.mygarden.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zj.mygarden.data.Plant
 import com.zj.mygarden.databinding.ListItemPlantBinding
+import com.zj.mygarden.fragment.HomeFragmentDirections
 
 class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantViewHolder>(PlantDiffCallback()) {
 
@@ -37,8 +39,10 @@ class PlantAdapter : ListAdapter<Plant, PlantAdapter.PlantViewHolder>(PlantDiffC
             }
         }
 
-        private fun navigateToPlant(plant: Plant, it: View?) {
-            // TODO: 2021/1/29
+        private fun navigateToPlant(plant: Plant, view: View) {
+            val direction =
+                HomeFragmentDirections.actionHomeFragmentToPlantDetailFragment(plant.plantId)
+            view.findNavController().navigate(direction)
         }
 
         fun bind(item: Plant) {
