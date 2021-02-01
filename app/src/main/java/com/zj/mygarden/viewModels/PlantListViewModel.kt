@@ -11,6 +11,9 @@ import kotlinx.coroutines.flow.flatMapConcat
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 
+/**
+ * [PlantListFragment]
+ */
 class PlantListViewModel @ViewModelInject internal constructor(
     plantRepository: PlantRepository,
     @Assisted private val savedStateHandle: SavedStateHandle

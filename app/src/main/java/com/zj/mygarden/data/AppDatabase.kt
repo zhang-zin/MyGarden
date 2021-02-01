@@ -1,7 +1,6 @@
 package com.zj.mygarden.data
 
 import android.content.Context
-import androidx.databinding.adapters.Converters
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -12,10 +11,12 @@ import androidx.work.WorkManager
 import com.zj.mygarden.utilities.DATABASE_NAME
 import com.zj.mygarden.workers.SeedDatabaseWorker
 
-@Database(entities = [Plant::class], version = 1, exportSchema = false)
+@Database(entities = [Plant::class, GardenPlanting::class], version = 1, exportSchema = false)
+@TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun plantDao(): PlantDao
+    abstract fun gardenPlantingDao(): GardenPlantingDao
 
     companion object {
         @Volatile

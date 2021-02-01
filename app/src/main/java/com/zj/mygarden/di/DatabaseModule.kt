@@ -2,6 +2,7 @@ package com.zj.mygarden.di
 
 import android.content.Context
 import com.zj.mygarden.data.AppDatabase
+import com.zj.mygarden.data.GardenPlantingDao
 import com.zj.mygarden.data.PlantDao
 import dagger.Module
 import dagger.Provides
@@ -23,6 +24,11 @@ class DatabaseModule {
     @Provides
     fun providePlantDao(appDatabase: AppDatabase): PlantDao {
         return appDatabase.plantDao()
+    }
+
+    @Provides
+    fun provideGardenPlantingDao(appDatabase: AppDatabase): GardenPlantingDao {
+        return appDatabase.gardenPlantingDao()
     }
 
 }

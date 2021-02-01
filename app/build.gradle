@@ -14,11 +14,13 @@ android {
         applicationId "com.zj.mygarden"
         minSdkVersion 21
         targetSdkVersion 30
+        testInstrumentationRunner "com.google.samples.apps.sunflower.utilities.MainTestRunner"
         versionCode 1
         versionName "1.0"
         vectorDrawables.useSupportLibrary true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
+        buildConfigField("String", "UNSPLASH_ACCESS_KEY", "\"" + getUnsplashAccess() + "\"")
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
@@ -91,4 +93,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}
+
+def getUnsplashAccess() {
+    return project.findProperty("unsplash_access_key")
 }
